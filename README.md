@@ -1,4 +1,17 @@
 # crutch
+
+# Компиляция
+
+windows в папке src
+``` bash
+gcc *.c -o crutch.exe
+```
+
+linux в папке src
+``` bash
+gcc *.c
+```
+
 # Оформление функции
 
 Файл лежит в src
