@@ -1,5 +1,5 @@
-#include <structs.h>
 #include <stdio.h>
+#include "structs.h"
 
 typedef struct {
 	const char* str;
