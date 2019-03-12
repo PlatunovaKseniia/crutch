@@ -1,3 +1,5 @@
 *.exe
 *.out
 main.c
+test.sh
+test_dir
