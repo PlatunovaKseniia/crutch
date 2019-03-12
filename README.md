@@ -28,8 +28,7 @@ int funcName() {
 
 # Тест функции
 
-Например для функции сложения
-Файл теста находится в папке test
+Например для функции сложения. Файл теста находится в папке test
 
 ```c
 
@@ -66,5 +65,44 @@ int main() {
     error(test[i])
   }
 }
+
+```
+
+# AutoTest
+
+Если на линукс, то можно сохранить этот файл в папке crutch как test.sh. И запустить ./test.sh. Тесты все пройдут сами. 
+
+```bash
+
+#!/bin/sh
+
+mkdir test_dir
+
+cp src/*.c test_dir/
+cp src/*.h test_dir/
+
+B="$(ls src  | tr ' ' '\n')"
+A="$(ls test | tr ' ' '\n')"
+cd test_dir
+
+for x in $B
+do
+	if [[ "$x" == "main.c" ]]
+	then
+		rm $x
+	fi
+done
+
+for x in $A
+do
+	cp "../test/$x" "./"
+	gcc *.c
+	./a.out
+	rm $x
+done
+
+cd ..
+rm -rf test_dir
+
 
 ```

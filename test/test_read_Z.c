@@ -64,7 +64,7 @@ int main() {
 		printf("%s -> %s\n", "readWholeNumber", "pass");
 	} else {
 		printf("%s -> %s ", "readWholeNumber", "error");
-		printf("in %d:, %s -> ", i , tests[i].str);
+		printf("in %d: %s -> ", i , tests[i].str);
 		printf("%s: %d, %s: %d, %s: ", "sign", wholeNumber->sign, "lenght", wholeNumber->naturalNumber->lenght, "numbers");
 		for (int j = 0; j <  wholeNumber->naturalNumber->lenght; j++) {
 			printf("%d",  wholeNumber->naturalNumber->numbers[j]);
