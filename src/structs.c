@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "structs.h"
 
 // Илья Баталев
@@ -13,8 +11,10 @@ NaturalNumber* readNaturalNumber() {
 	unsigned char c;
 	int zero = 0;
 
+	if ((c = getchar()) == '0') zero = 1;
+	else ungetc(c, stdin);
 	// пропускаем первые нули
-	while ((c = getchar()) == '0') zero = 1;
+	while ((c = getchar()) == '0');
 	// возвращаем '\n'
 	ungetc(c, stdin);
 	// если ничего кроме нулей, то возвращаем 1 ноль
@@ -53,9 +53,9 @@ WholeNumber* readWholeNumber() {
 	wholeNumber->naturalNumber = NULL;
 	unsigned char c;
 	// Если первый символ '-', то чило отрицательное, иначе положитеьлное
-	if ((c = getchar()) == '-') wholeNumber->sign = -1;
+	if ((c = getchar()) == '-') wholeNumber->sign = 1;
 	else {
-		wholeNumber->sign = 1;
+		wholeNumber->sign = 2;
 		ungetc(c, stdin);
 	}
 
@@ -63,6 +63,8 @@ WholeNumber* readWholeNumber() {
 	if ((wholeNumber->naturalNumber = readNaturalNumber()) == NULL) {
 		freeWholeNumber(wholeNumber);
 		wholeNumber = NULL;
+	} else if (wholeNumber->naturalNumber->lenght == 1 && wholeNumber->naturalNumber->numbers[0] == 0) {
+		wholeNumber->sign = 0;
 	}
 
 	return wholeNumber;

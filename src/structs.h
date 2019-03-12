@@ -1,27 +1,33 @@
 #pragma once
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct {
-	int lenght;
-	int* numbers;
+	int lenght;   // длина массива цифр
+	int* numbers; // массив из цифр
 } NaturalNumber;
 
 NaturalNumber* readNaturalNumber();
 void freeNaturalNumber(NaturalNumber*);
 
 typedef struct {
+	// знак числа
+	// 0 - ноль
+	// 1 - отрицательное
+	// 2 - положительное
 	int sign;
-	NaturalNumber* naturalNumber;
+	NaturalNumber* naturalNumber; // натуральное число
 } WholeNumber;
 
 WholeNumber*   readWholeNumber();
 void freeWholeNumber(WholeNumber*);
 
 typedef struct {
-	NaturalNumber* naturalNumber;
-	WholeNumber* WholeNumber;
+	WholeNumber* WholeNumber;     // числитель
+	NaturalNumber* naturalNumber; // знаменатель
 } RationNumber;
 
 typedef struct {
-	int lenght;
-	RationNumber* rationNumbers;
+	int lenght; 				  // степень многочлена
+	RationNumber* rationNumbers;  // коэффиценты многочлена
 } Multinomial;
