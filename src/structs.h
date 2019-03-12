@@ -23,7 +23,7 @@ WholeNumber*   readWholeNumber();
 void freeWholeNumber(WholeNumber*);
 
 typedef struct {
-	WholeNumber* WholeNumber;     // числитель
+	WholeNumber* wholeNumber;     // числитель
 	NaturalNumber* naturalNumber; // знаменатель
 } RationNumber;
 
