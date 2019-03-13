@@ -36,7 +36,8 @@ int NZER_N_B(NaturalNumber* number) {
 // Или NULL, если произошла ошибка
 NaturalNumber* SUB_NN_N(NaturalNumber* first, NaturalNumber* second) {
 	NaturalNumber* naturalNumber = NULL;
-	if (COM_NN_D(first, second) == 2) { // если первое число больше второго
+	int com;
+	if ((com = COM_NN_D(first, second)) == 2) { // если первое число больше второго
 		naturalNumber = (NaturalNumber*)malloc(sizeof(NaturalNumber));
 		int* array = (int*)malloc(sizeof(int) * first->length); // цифры числа в обратном порядке
 		int length = first->length;  						    // длина массива array
@@ -63,6 +64,12 @@ NaturalNumber* SUB_NN_N(NaturalNumber* first, NaturalNumber* second) {
 			naturalNumber->numbers[i] = array[length - 1 - i];
 		}
 		free(array);
+	} else if (com == 0) {
+		// Создать число ноль
+		naturalNumber = (NaturalNumber*)malloc(sizeof(NaturalNumber));
+		naturalNumber->length = 1;
+		naturalNumber->numbers = (int*)malloc(sizeof(int));
+		naturalNumber->numbers[0] = 0;
 	}
 
 	return naturalNumber;
