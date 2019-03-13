@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "structs.h"
+#include "mathematics.h"
 
 typedef struct {
 	const char* str;
