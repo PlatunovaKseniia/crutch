@@ -13,8 +13,13 @@ typedef struct {
 // 2 - первое больше
 // 1 - второе больше
 // 0 - они равны
-int COM_NN_D(NaturalNumber* a, NaturalNumber* b);
+int COM_NN_D(NaturalNumber*, NaturalNumber*);
 
+// Панарин Александр
+// Функция проврки на ноль
+// Функция вернёт
+// 1 - если число не равно нулю
+// 0 - если число равно нулю
 int NZER_N_B(NaturalNumber*);
 
 NaturalNumber* ADD_1N_N(NaturalNumber*);

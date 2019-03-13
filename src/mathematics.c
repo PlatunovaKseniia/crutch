@@ -22,6 +22,15 @@ int COM_NN_D(NaturalNumber* first, NaturalNumber* second) {
 	return result;
 }
 
+// Панарин Александр
+// Функция проврки на ноль
+// Функция вернёт
+// 1 - если число не равно нулю
+// 0 - если число равно нулю
+int NZER_N_B(NaturalNumber* number) {
+    return !(number->length == 1 && number->numbers[0] == 0);
+}
+
 // Илья Баталев
 // Функция, находящая разность двух чисел
 // Возвращает указатель на натуральное число
