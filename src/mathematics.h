@@ -52,11 +52,12 @@ NaturalNumber* LCM_NN_N(NaturalNumber*, NaturalNumber*);
 // Функция, считывающая натуральное число
 // Возвращает указатель на натуральное число
 // Или NULL, если произошла ошибка
-NaturalNumber* readNaturalNumber();
+NaturalNumber* READ_N();
 
 // Илья Баталев
 // Функция освобождает память из под натурального числа
-void freeNaturalNumber(NaturalNumber*);
+// И делает указатель равным NULL
+void FREE_N(NaturalNumber**);
 
 typedef struct {
 	int sign;                     // знак числа
@@ -66,8 +67,16 @@ typedef struct {
 	NaturalNumber* naturalNumber; // натуральное число
 } WholeNumber;
 
-WholeNumber*   readWholeNumber();
-void freeWholeNumber(WholeNumber*);
+// Илья Баталев
+// Функция, считывающая целое число
+// Возвращает указатель на целое число
+// Или NULL, если произошла ошибка
+WholeNumber* READ_Z();
+
+// Илья Баталев
+// Функция освобождает память из под целого числа
+// И делает указатель равным NULL
+void FREE_Z(WholeNumber**);
 
 typedef struct {
 	WholeNumber* wholeNumber;     // числитель

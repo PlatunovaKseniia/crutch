@@ -11,14 +11,13 @@ int COM_NN_D(NaturalNumber* first, NaturalNumber* second) {
 	if (first->length > second->length)      result = 2;
 	else if (second->length > first->length) result = 1;
 	else
-		for (int i = first->length - 1; i >= 0 && !result; i--) {
+		for (int i = first->length - 1; i >= 0 && !result; i--)
 			if (first->numbers[i] > second->numbers[i])
 				result = 2;
 			else if (second->numbers[i] > first->numbers[i])
 				result = 1;
 			else
 				result = 0;
-		}
 	return result;
 }
 
@@ -73,7 +72,7 @@ NaturalNumber* SUB_NN_N(NaturalNumber* first, NaturalNumber* second) {
 // Функция, считывающая натуральное число
 // Возвращает указатель на натуральное число
 // Или NULL, если произошла ошибка
-NaturalNumber* readNaturalNumber() {
+NaturalNumber* READ_N() {
 	NaturalNumber* naturalNumber = (NaturalNumber*)malloc(sizeof(NaturalNumber));
 	naturalNumber->numbers = NULL;
 	naturalNumber->length  = 0;
@@ -94,8 +93,7 @@ NaturalNumber* readNaturalNumber() {
 		if ((c -= 48) < 10 && (naturalNumber->numbers = (int*)realloc(naturalNumber->numbers, sizeof(int) * ++naturalNumber->length)) != NULL) {
 			naturalNumber->numbers[naturalNumber->length - 1] = c;
 		} else {
-			freeNaturalNumber(naturalNumber);
-			naturalNumber = NULL;
+			FREE_N(&naturalNumber);
 			break;
 		}
 	}
@@ -105,11 +103,12 @@ NaturalNumber* readNaturalNumber() {
 
 // Илья Баталев
 // Функция освобождает память из под натурального числа
-void freeNaturalNumber(NaturalNumber* naturalNumber) {
-	if (naturalNumber != NULL) {
-		if (naturalNumber->numbers != NULL)
-			free(naturalNumber->numbers);
-		free(naturalNumber);
+void FREE_N(NaturalNumber** naturalNumber) {
+	if (*naturalNumber != NULL) {
+		if ((*naturalNumber)->numbers != NULL)
+			free((*naturalNumber)->numbers);
+		free(*naturalNumber);
+		*naturalNumber = NULL;
 	}
 }
 
@@ -117,7 +116,7 @@ void freeNaturalNumber(NaturalNumber* naturalNumber) {
 // Функция, считывающая целое число
 // Возвращает указатель на целое число
 // Или NULL, если произошла ошибка
-WholeNumber* readWholeNumber() {
+WholeNumber* READ_Z() {
 	WholeNumber* wholeNumber = (WholeNumber*)malloc(sizeof(WholeNumber));
 	wholeNumber->naturalNumber = NULL;
 	unsigned char c;
@@ -129,22 +128,21 @@ WholeNumber* readWholeNumber() {
 	}
 
 	// Считываем оставшуюся часть
-	if ((wholeNumber->naturalNumber = readNaturalNumber()) == NULL) {
-		freeWholeNumber(wholeNumber);
-		wholeNumber = NULL;
-	} else if (wholeNumber->naturalNumber->length == 1 && wholeNumber->naturalNumber->numbers[0] == 0) {
+	if ((wholeNumber->naturalNumber = READ_N()) == NULL)
+		FREE_Z(&wholeNumber);
+	else if (wholeNumber->naturalNumber->length == 1 && wholeNumber->naturalNumber->numbers[0] == 0)
 		wholeNumber->sign = 0;
-	}
 
 	return wholeNumber;
 }
 
 // Илья Баталев
 // Функция освобождает память из под целого числа
-void freeWholeNumber(WholeNumber* wholeNumber) {
-	if (wholeNumber != NULL) {
-			if (wholeNumber->naturalNumber != NULL)
-				freeNaturalNumber(wholeNumber->naturalNumber);
-		free(wholeNumber);
+void FREE_Z(WholeNumber** wholeNumber) {
+	if (*wholeNumber != NULL) {
+			if ((*wholeNumber)->naturalNumber != NULL)
+				FREE_N(&(*wholeNumber)->naturalNumber);
+		free(*wholeNumber);
+		*wholeNumber = NULL;
 	}
 }
