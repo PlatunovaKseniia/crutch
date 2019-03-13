@@ -7,7 +7,7 @@
 NaturalNumber* readNaturalNumber() {
 	NaturalNumber* naturalNumber = (NaturalNumber*)malloc(sizeof(NaturalNumber));
 	naturalNumber->numbers = NULL;
-	naturalNumber->lenght  = 0;
+	naturalNumber->length  = 0;
 	unsigned char c;
 	int zero = 0;
 
@@ -22,8 +22,8 @@ NaturalNumber* readNaturalNumber() {
 
 	while ((c = getchar()) != '\n') {
 		// если c -= 48 < 10, то это значит, что это цифра
-		if ((c -= 48) < 10 && (naturalNumber->numbers = (int*)realloc(naturalNumber->numbers, sizeof(int) * ++naturalNumber->lenght)) != NULL) {
-			naturalNumber->numbers[naturalNumber->lenght - 1] = c;
+		if ((c -= 48) < 10 && (naturalNumber->numbers = (int*)realloc(naturalNumber->numbers, sizeof(int) * ++naturalNumber->length)) != NULL) {
+			naturalNumber->numbers[naturalNumber->length - 1] = c;
 		} else {
 			freeNaturalNumber(naturalNumber);
 			naturalNumber = NULL;
@@ -63,7 +63,7 @@ WholeNumber* readWholeNumber() {
 	if ((wholeNumber->naturalNumber = readNaturalNumber()) == NULL) {
 		freeWholeNumber(wholeNumber);
 		wholeNumber = NULL;
-	} else if (wholeNumber->naturalNumber->lenght == 1 && wholeNumber->naturalNumber->numbers[0] == 0) {
+	} else if (wholeNumber->naturalNumber->length == 1 && wholeNumber->naturalNumber->numbers[0] == 0) {
 		wholeNumber->sign = 0;
 	}
 

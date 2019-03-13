@@ -3,13 +3,13 @@
 
 typedef struct {
 	const char* str;
-	int lenght;
+	int length;
 	WholeNumber wholeNumber;
 } Test;
 
-void ungetcString(const char* str, int lenght) {
+void ungetcString(const char* str, int length) {
 	ungetc('\n', stdin);
-	for (int i = lenght - 1; i > -1; i--) {
+	for (int i = length - 1; i > -1; i--) {
 		ungetc(str[i], stdin);
 	}
 }
@@ -45,11 +45,11 @@ int main() {
 
 	WholeNumber* wholeNumber;
 	for (i = 0; i < 5 && flag; i++) {
-		ungetcString(tests[i].str, tests[i].lenght);
+		ungetcString(tests[i].str, tests[i].length);
 		wholeNumber = readWholeNumber();
 		if (wholeNumber->sign == tests[i].wholeNumber.sign &&
-			wholeNumber->naturalNumber->lenght == tests[i].wholeNumber.naturalNumber->lenght) {
-			for (int j = 0; j < wholeNumber->naturalNumber->lenght && flag; j++) {
+			wholeNumber->naturalNumber->length == tests[i].wholeNumber.naturalNumber->length) {
+			for (int j = 0; j < wholeNumber->naturalNumber->length && flag; j++) {
 				if (wholeNumber->naturalNumber->numbers[j] != tests[i].wholeNumber.naturalNumber->numbers[j]) {
 					flag = 0;
 				}
@@ -65,8 +65,8 @@ int main() {
 	} else {
 		printf("%s -> %s ", "readWholeNumber", "error");
 		printf("in %d: %s -> ", i , tests[i].str);
-		printf("%s: %d, %s: %d, %s: ", "sign", wholeNumber->sign, "lenght", wholeNumber->naturalNumber->lenght, "numbers");
-		for (int j = 0; j <  wholeNumber->naturalNumber->lenght; j++) {
+		printf("%s: %d, %s: %d, %s: ", "sign", wholeNumber->sign, "length", wholeNumber->naturalNumber->length, "numbers");
+		for (int j = 0; j <  wholeNumber->naturalNumber->length; j++) {
 			printf("%d",  wholeNumber->naturalNumber->numbers[j]);
 		}
 		puts("");

@@ -3,13 +3,13 @@
 
 typedef struct {
 	const char* str;
-	int lenght;
+	int length;
 	NaturalNumber naturalNumber;
 } Test;
 
-void ungetcString(const char* str, int lenght) {
+void ungetcString(const char* str, int length) {
 	ungetc('\n', stdin);
-	for (int i = lenght - 1; i > -1; i--) {
+	for (int i = length - 1; i > -1; i--) {
 		ungetc(str[i], stdin);
 	}
 }
@@ -38,10 +38,10 @@ int main() {
 
 	NaturalNumber* naturalNumber;
 	for (i = 0; i < 5 && flag; i++) {
-		ungetcString(tests[i].str, tests[i].lenght);
+		ungetcString(tests[i].str, tests[i].length);
 		naturalNumber = readNaturalNumber();
-		if (naturalNumber->lenght == tests[i].naturalNumber.lenght) {
-			for (int j = 0; j < naturalNumber->lenght && flag; j++) {
+		if (naturalNumber->length == tests[i].naturalNumber.length) {
+			for (int j = 0; j < naturalNumber->length && flag; j++) {
 				if (naturalNumber->numbers[j] != tests[i].naturalNumber.numbers[j]) {
 					flag = 0;
 				}
@@ -57,8 +57,8 @@ int main() {
 	} else {
 		printf("%s -> %s ", "readNaturalNumber", "error");
 		printf("in %d: %s -> ", i, tests[i].str);
-		printf("%s: %d, %s: ", "lenght", naturalNumber->lenght, "numbers");
-		for (int j = 0; j < naturalNumber->lenght; j++) {
+		printf("%s: %d, %s: ", "length", naturalNumber->length, "numbers");
+		for (int j = 0; j < naturalNumber->length; j++) {
 			printf("%d", naturalNumber->numbers[j]);
 		}
 		puts("");

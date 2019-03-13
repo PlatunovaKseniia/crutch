@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 typedef struct {
-	int lenght;   // длина массива цифр
+	int length;   // длина массива цифр
 	int* numbers; // массив из цифр
 } NaturalNumber;
 
@@ -28,6 +28,6 @@ typedef struct {
 } RationNumber;
 
 typedef struct {
-	int lenght; 				  // степень многочлена
+	int length; 				  // степень многочлена
 	RationNumber* rationNumbers;  // коэффиценты многочлена
 } Multinomial;
