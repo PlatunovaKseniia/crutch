@@ -1,11 +1,10 @@
-#include "NZER_N_B.h"
+#include "mathematics.h"
 
 //Панарин Александр
 //функция умножения двух натуральных чисел
 //функция возвращает указатель на натуральное число
 //в случае ошибки возвращается NULL
-NaturalNumber* MUL_NN_N(NaturalNumber* first, NaturalNumber* second)
-{
+NaturalNumber* MUL_NN_N(NaturalNumber* first, NaturalNumber* second) {
     int k=0, //степень десятки
         i;  //счётчик цикла
     NaturalNumber* result=NULL;  //результат

@@ -83,6 +83,8 @@ typedef struct {
 	NaturalNumber* naturalNumber; // знаменатель
 } RationNumber;
 
+int POZ_Z_D(WholeNumber*);
+
 typedef struct {
 	int length; 				  // степень многочлена
 	RationNumber* rationNumbers;  // коэффиценты многочлена

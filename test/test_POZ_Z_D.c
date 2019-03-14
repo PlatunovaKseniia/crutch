@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include "structs.h"
-#include "POZ_Z_D.h"
 #include <stdlib.h>
+#include "mathematics.h"
 
 typedef struct {
 	int result;
@@ -40,7 +38,7 @@ int main() {
 		printf("%s -> %s ", "NZER_N_B", "error");
 		printf("in %d ", i);
 
-		
+
 		printf("-> %d\n", g);
 	}
 
