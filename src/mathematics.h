@@ -48,6 +48,18 @@ NaturalNumber* GCF_NN_N(NaturalNumber*, NaturalNumber*);
 
 NaturalNumber* LCM_NN_N(NaturalNumber*, NaturalNumber*);
 
+// Панарин Александр
+// Функция копирования натурального числа
+// Функция возвращает указатель на натуральное число
+// В случае ошибки функция вернёт NULL
+NaturalNumber* COPY_N(NaturalNumber*);
+
+// Панарин Александр
+// Функция создания натурального числа с заданной длиной
+// Функция возвращает указатель на натуральное число
+// В случае ошибки функция вернёт NULL
+NaturalNumber* INIT_N(unsigned int);
+
 // Илья Баталев
 // Функция, считывающая натуральное число
 // Возвращает указатель на натуральное число
@@ -82,6 +94,8 @@ typedef struct {
 	WholeNumber* wholeNumber;     // числитель
 	NaturalNumber* naturalNumber; // знаменатель
 } RationNumber;
+
+int POZ_Z_D(WholeNumber*);
 
 typedef struct {
 	int length; 				  // степень многочлена

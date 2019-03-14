@@ -30,6 +30,15 @@ int NZER_N_B(NaturalNumber* number) {
     return !(number->length == 1 && number->numbers[0] == 0);
 }
 
+// Панарин Александр
+// Функция возврата знака натурального числа
+// 2 - положительное
+// 0 — равное нулю
+// 1 - отрицательное
+int POZ_Z_D(WholeNumber* whole) {
+    return whole->sign;
+}
+
 // Илья Баталев
 // Функция, находящая разность двух чисел
 // Возвращает указатель на натуральное число
@@ -38,7 +47,6 @@ NaturalNumber* SUB_NN_N(NaturalNumber* first, NaturalNumber* second) {
 	NaturalNumber* naturalNumber = NULL;
 	int com;
 	if ((com = COM_NN_D(first, second)) == 2) { // если первое число больше второго
-		naturalNumber = (NaturalNumber*)malloc(sizeof(NaturalNumber));
 		int* array = (int*)malloc(sizeof(int) * first->length); // цифры числа в обратном порядке
 		int length = first->length;  						    // длина массива array
 		int prev   = 0;    										// является ли следующее число занятым
@@ -58,17 +66,13 @@ NaturalNumber* SUB_NN_N(NaturalNumber* first, NaturalNumber* second) {
 		while (array[length - 1] == 0) length--;
 
 		// переворачиваем массив
-		naturalNumber->length = length;
-		naturalNumber->numbers = (int*)malloc(sizeof(int) * length);
-		for (int i = length - 1; i >= 0; i--) {
+		naturalNumber = INIT_N(length);
+		for (int i = length - 1; i >= 0; i--)
 			naturalNumber->numbers[i] = array[length - 1 - i];
-		}
 		free(array);
 	} else if (com == 0) {
 		// Создать число ноль
-		naturalNumber = (NaturalNumber*)malloc(sizeof(NaturalNumber));
-		naturalNumber->length = 1;
-		naturalNumber->numbers = (int*)malloc(sizeof(int));
+		naturalNumber = INIT_N(1);
 		naturalNumber->numbers[0] = 0;
 	}
 
@@ -80,9 +84,7 @@ NaturalNumber* SUB_NN_N(NaturalNumber* first, NaturalNumber* second) {
 // Возвращает указатель на натуральное число
 // Или NULL, если произошла ошибка
 NaturalNumber* READ_N() {
-	NaturalNumber* naturalNumber = (NaturalNumber*)malloc(sizeof(NaturalNumber));
-	naturalNumber->numbers = NULL;
-	naturalNumber->length  = 0;
+	NaturalNumber* naturalNumber = INIT_N(0);
 	unsigned char c;
 	int zero = 0;
 
@@ -117,6 +119,40 @@ void FREE_N(NaturalNumber** naturalNumber) {
 		free(*naturalNumber);
 		*naturalNumber = NULL;
 	}
+}
+
+// Панарин Александр
+// Функция создания натурального числа с заданной длиной
+// Функция возвращает указатель на натуральное число
+// В случае ошибки функция вернёт NULL
+NaturalNumber* INIT_N(unsigned int len) {
+    NaturalNumber* new_digit = NULL;
+
+    if((new_digit = (NaturalNumber*)malloc(sizeof(NaturalNumber))) != NULL) {
+        if((new_digit->numbers = (int*)malloc(len * sizeof(int))) != NULL) {
+            new_digit->length = len;
+        } else FREE_N(&new_digit);
+    }
+
+    return new_digit;
+}
+
+// Панарин Александр
+// Функция копирования натурального числа
+// Функция возвращает указатель на натуральное число
+// В случае ошибки функция вернёт NULL
+NaturalNumber* COPY_N(NaturalNumber* digit) {
+    NaturalNumber* new_digit = NULL;
+
+    if ((new_digit = (NaturalNumber*)malloc(sizeof(NaturalNumber))) != NULL) {
+        if((new_digit->numbers = (int*)malloc((digit->length) * sizeof(int))) != NULL) {
+            new_digit->length = digit->length;
+            for(int i=0; i < digit->length; i++)
+                new_digit->numbers[i] = digit->numbers[i];
+        } else FREE_N(& new_digit);
+    }
+
+    return new_digit;
 }
 
 // Илья Баталев
