@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 typedef struct {
-	int length;   // длина массива цифр
+    int length;   // длина массива цифр
 	int* numbers; // массив из цифр
 } NaturalNumber;
 
