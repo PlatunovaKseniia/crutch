@@ -33,12 +33,10 @@ int main() {
 
 	i--;
 	if (flag) {
-		printf("%s -> %s\n", "NZER_N_B", "pass");
+		printf("%s -> %s\n", "POZ_Z_D", "pass");
 	} else {
-		printf("%s -> %s ", "NZER_N_B", "error");
+		printf("%s -> %s ", "POZ_Z_D", "error");
 		printf("in %d ", i);
-
-
 		printf("-> %d\n", g);
 	}
 
