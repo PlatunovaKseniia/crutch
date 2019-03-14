@@ -26,6 +26,7 @@ RationNumber* TRANS_Z_Q(WholeNumber* zero)
 {
     int i;
     RationNumber* one=NULL;
+    one=(RationNumber*)malloc(1*sizeof(RationNumber));
     one->wholeNumber->naturalNumber->numbers=(int*)realloc(one->wholeNumber->naturalNumber->numbers,zero->naturalNumber->length*sizeof(int));
     for (i=0;i<zero->naturalNumber->length;i++)
         one->wholeNumber->naturalNumber->numbers[i]=zero->naturalNumber->numbers[i];
@@ -36,6 +37,35 @@ RationNumber* TRANS_Z_Q(WholeNumber* zero)
     return one;
 }
 
+
+
+//N-12
+NaturalNumber* DIV_NN_N(NaturalNumbers* zero, NaturalNumbers* one)
+{
+    NaturalNumber* two;
+    NaturalNumber* three;
+    NaturalNumber* four;
+    int flag;
+    flag=COM_NN_D(zero,one);
+    if (flag!=2 || flag!=0)
+        return NULL;
+    else
+    {
+        two = DIV_NN_N(zero,one);
+        three = MUL_NN_N(one, two);
+        four = SUB_NN_N(zero,three);
+    }
+    FREE_N(&two);
+    FREE_N(&three);
+    return four;
+}
+
+
+//Z-7
+WholeNumber* SUB_ZZ_Z(WholeNumber* zero, WholeNumber* one)
+{
+    
+}
 
 
 
