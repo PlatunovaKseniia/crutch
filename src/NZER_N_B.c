@@ -5,5 +5,5 @@
 //Функция вернёт 1,если число не равно нулю, ионаче 0
 int NZER_N_B(NaturalNumber* digit)
 {
-    return !(digit->lenght == 1 && digit->numbers[0] == 0);
+    return !(digit->length == 1 && digit->numbers[0] == 0);
 }
