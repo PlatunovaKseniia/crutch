@@ -8,8 +8,11 @@
 // 0 - они равны
 int COM_NN_D(NaturalNumber* first, NaturalNumber* second) {
 	int result = 0;
+	// Если первое число длиннее, то оно больше
 	if (first->length > second->length)      result = 2;
+	// Если второе число длиннее, то оно больше
 	else if (second->length > first->length) result = 1;
+	// Иначе сравниваем все цифры
 	else
 		for (int i = first->length - 1; i >= 0 && !result; i--)
 			if (first->numbers[i] > second->numbers[i])
